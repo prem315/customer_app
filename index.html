@@ -5,21 +5,21 @@
 </head>
 <body ng-controller="customerController">
 	
-	<!-- h2>Customers</h2>
-	Filter: <input type="text" ng-model="">
-	<hr> -->
+	<h2>Customers</h2>
+	Filter: <input type="text" ng-model="customerFilter.name">
+	<hr>
 	<table>
 		<tr>
-			<th>Name</th>
-			<th>City Name</th>
-			<th>Orders</th>
-			<th>Date</th>
+			<th ng-click="doSort('name')">Name</th>
+			<th ng-click="doSort('city')">City Name</th>
+			<th ng-click="doSort('orderTotal')">Order Total</th>
+			<th ng-click="doSort('joined')">Date</th>
 		</tr>
-		<tr ng-repeat="cust in customers">
+		<tr ng-repeat="cust in customers | filter:customerFilter | orderBy:sortBy:reverse">
 			<td>{{ cust.name }}</td>
 			<td>{{ cust.city }}</td>
-			<td>{{ cust.orderTotal }}</td>
-			<td>{{ cust.joined }}</td>
+			<td>{{ cust.orderTotal | currency}}</td>
+			<td>{{ cust.joined | date:'dd-MM-YYYY' }}</td>
 		</tr>
 	</table>
 
