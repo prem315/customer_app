@@ -5,9 +5,26 @@
 </head>
 <body ng-controller="customerController">
 	
-	<h2>Customers</h2>
+	<!-- h2>Customers</h2>
 	Filter: <input type="text" ng-model="">
+	<hr> -->
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>City Name</th>
+			<th>Orders</th>
+			<th>Date</th>
+		</tr>
+		<tr ng-repeat="cust in customers">
+			<td>{{ cust.name }}</td>
+			<td>{{ cust.city }}</td>
+			<td>{{ cust.orderTotal }}</td>
+			<td>{{ cust.joined }}</td>
+		</tr>
+	</table>
 
+	<hr>
+	<span>Total customers: {{}}</span>
 
 
 	<script src="angular.js"></script>
