@@ -1,7 +1,18 @@
-myApp.controller('customerController', function($scope){
+myApp.controller('ordersController', function($scope, $routeParams){
 
-	$scope.sortBy = 'name';
-	$scope.reverse = false;
+	/*$scope.sortBy = 'name';
+	$scope.reverse = false;*/
+	var customerId = $routeParams.customerId;
+	$scope.orders = null;
+
+	function init(){
+		for(var i=0; i<$scope.customers.length; i++){
+			if($scope.customers[i].id === parseInt(customerId)){
+				$scope.orders = $scope.customers[i].orders;
+				break;
+			}
+		}
+	}
 
 	$scope.customers = [
 		{
@@ -50,11 +61,13 @@ myApp.controller('customerController', function($scope){
 					total: '29.34'
 				}
 			]
-		},
+		}
 	];
 
-	$scope.doSort = function(propName){
+	init();
+
+	/*$scope.doSort = function(propName){
 		$scope.sortBy = propName;
 		$scope.reverse = !$scope.reverse;
-	};
+	};*/
 })

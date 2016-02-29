@@ -3,33 +3,14 @@
 <head>
 	<title>Customer App</title>
 </head>
-<body ng-controller="customerController">
-	
-	<h2>Customers</h2>
-	Filter: <input type="text" ng-model="customerFilter.name">
-	<hr>
-	<table>
-		<tr>
-			<th ng-click="doSort('name')">Name</th>
-			<th ng-click="doSort('city')">City Name</th>
-			<th ng-click="doSort('orderTotal')">Order Total</th>
-			<th ng-click="doSort('joined')">Date</th>
-		</tr>
-		<tr ng-repeat="cust in customers | filter:customerFilter | orderBy:sortBy:reverse">
-			<td>{{ cust.name }}</td>
-			<td>{{ cust.city }}</td>
-			<td>{{ cust.orderTotal | currency}}</td>
-			<td>{{ cust.joined | date:'dd-MM-YYYY' }}</td>
-		</tr>
-	</table>
+<body>
+	<div ng-view></div>
 
-	<hr>
-	<span>Total customers: {{}}</span>
-
-
-	<script src="angular.js"></script>
+	<script src="scripts/angular.js"></script>
+	<script src="scripts/angular-route.js"></script>
 	<script src="app/app.js"></script>
 	<script src="app/controllers/customerController.js"></script>
+	<script src="app/controllers/ordersController.js"></script>
 </body>
 </html>
 
